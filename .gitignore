@@ -1,1 +1,4 @@
 node_modules
+test-app/platforms
+test-app/plugins
+test-app/www

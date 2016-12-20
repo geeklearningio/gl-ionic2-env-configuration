@@ -1,3 +1,3 @@
 export * from './gl-ionic2-env-configuration.module';
-export * from './providers/env-configuration';
+export * from './providers/env-configuration-provider';
 //# sourceMappingURL=index.js.map

@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 
-@Injectable()
-export class EnvConfiguration {
+var _merge = require('lodash/merge');
 
-  private merrgedConfiguration: any = {};
+@Injectable()
+export class EnvConfigurationProvider<T> {
+
+  private mergedConfiguration: T = <T>{};
 
   constructor() {
   }
@@ -16,12 +18,11 @@ export class EnvConfiguration {
       xobj.onreadystatechange = () => {
         if (xobj.readyState === 4) {
           if ((xobj.status === 200 || xobj.status === 0) && xobj.responseText) {
-            (<any>window).configuration = JSON.parse(xobj.responseText);
-            this.merrgedConfiguration = (<any>window).configuration;
+            this.addConfig(<T>JSON.parse(xobj.responseText));
             resolve(true);
           } else {
-            console.log('could not load environment configuration file');
-            resolve(false);
+            console.log('Could not load environment configuration file');
+            resolve(false); // don't reject the promise, as it would completely break the app loading
           }
         }
       };
@@ -29,7 +30,13 @@ export class EnvConfiguration {
     });
   }
 
-  getConfig() {
-    return this.merrgedConfiguration;
+  public addConfig(obj: T) {
+    if (obj) {
+      this.mergedConfiguration = <T>_merge(this.mergedConfiguration, obj);
+    }
+  }
+
+  public getConfig() {
+    return this.mergedConfiguration;
   }
 }

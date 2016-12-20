@@ -1,10 +1,10 @@
 import { Observable } from 'rxjs';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { EnvConfiguration } from "./providers/env-configuration";
+import { EnvConfigurationProvider } from "./providers/env-configuration-provider";
 
 
-export function envConfigurationFactory(config: EnvConfiguration) {
+export function envConfigurationFactory(config: EnvConfigurationProvider<any>) {
   return () => config.load();
 }
 
@@ -12,10 +12,10 @@ export function envConfigurationFactory(config: EnvConfiguration) {
   declarations: [
   ],
   providers: [
-    EnvConfiguration,
+    EnvConfigurationProvider,
     { provide: APP_INITIALIZER,
       useFactory: envConfigurationFactory,
-      deps: [EnvConfiguration],
+      deps: [EnvConfigurationProvider],
       multi: true },
   ],
   exports: [

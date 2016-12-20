@@ -5,11 +5,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { Injectable } from '@angular/core';
-var EnvConfiguration = (function () {
-    function EnvConfiguration() {
-        this.merrgedConfiguration = {};
+var _merge = require('lodash/merge');
+var EnvConfigurationProvider = (function () {
+    function EnvConfigurationProvider() {
+        this.mergedConfiguration = {};
     }
-    EnvConfiguration.prototype.load = function () {
+    EnvConfigurationProvider.prototype.load = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
             var xobj = new XMLHttpRequest();
@@ -18,26 +19,30 @@ var EnvConfiguration = (function () {
             xobj.onreadystatechange = function () {
                 if (xobj.readyState === 4) {
                     if ((xobj.status === 200 || xobj.status === 0) && xobj.responseText) {
-                        window.configuration = JSON.parse(xobj.responseText);
-                        _this.merrgedConfiguration = window.configuration;
+                        _this.addConfig(JSON.parse(xobj.responseText));
                         resolve(true);
                     }
                     else {
-                        console.log('could not load environment configuration file');
-                        resolve(false);
+                        console.log('Could not load environment configuration file');
+                        resolve(false); // don't reject the promise, as it would completely break the app loading
                     }
                 }
             };
             xobj.send(null);
         });
     };
-    EnvConfiguration.prototype.getConfig = function () {
-        return this.merrgedConfiguration;
+    EnvConfigurationProvider.prototype.addConfig = function (obj) {
+        if (obj) {
+            this.mergedConfiguration = _merge(this.mergedConfiguration, obj);
+        }
     };
-    return EnvConfiguration;
+    EnvConfigurationProvider.prototype.getConfig = function () {
+        return this.mergedConfiguration;
+    };
+    return EnvConfigurationProvider;
 }());
-EnvConfiguration = __decorate([
+EnvConfigurationProvider = __decorate([
     Injectable()
-], EnvConfiguration);
-export { EnvConfiguration };
-//# sourceMappingURL=env-configuration.js.map
+], EnvConfigurationProvider);
+export { EnvConfigurationProvider };
+//# sourceMappingURL=env-configuration-provider.js.map

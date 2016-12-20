@@ -16,7 +16,8 @@
   "exclude": [
     "node_modules",
     "dist",
-    "scripts"
+    "scripts",
+    "test-app"
   ],
   "angularCompilerOptions": {
     "genDir": "aot"

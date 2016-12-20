@@ -6,7 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { EnvConfiguration } from "./providers/env-configuration";
+import { EnvConfigurationProvider } from "./providers/env-configuration-provider";
 export function envConfigurationFactory(config) {
     return function () { return config.load(); };
 }
@@ -19,10 +19,10 @@ GLIonic2EnvConfigurationModule = __decorate([
     NgModule({
         declarations: [],
         providers: [
-            EnvConfiguration,
+            EnvConfigurationProvider,
             { provide: APP_INITIALIZER,
                 useFactory: envConfigurationFactory,
-                deps: [EnvConfiguration],
+                deps: [EnvConfigurationProvider],
                 multi: true },
         ],
         exports: [],
