@@ -1,7 +1,7 @@
 {
-  "name": "ionic-module-template",
+  "name": "gl-ionic2-env-configuration",
   "version": "0.0.12",
-  "description": "A template for creating reusable module for Angular 2 and Ionic 2",
+  "description": "An Ionic2 Service to load an environment specific configuration before everything else",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "scripts": {
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/driftyco/ionic-module-template.git"
+    "url": "git+https://github.com/geeklearningio/gl-ionic2-env-configuration.git"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/driftyco/ionic-module-template/issues"
+    "url": "https://github.com/geeklearningio/gl-ionic2-env-configuration/issues"
   },
-  "homepage": "https://github.com/driftyco/ionic-module-template#readme",
+  "homepage": "https://github.com/geeklearningio/gl-ionic2-env-configuration#readme",
   "devDependencies": {
     "@angular/common": "^2.1.1",
     "@angular/compiler": "^2.1.1",
