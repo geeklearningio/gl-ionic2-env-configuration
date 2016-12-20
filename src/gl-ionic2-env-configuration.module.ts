@@ -1,11 +1,22 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {EnvConfiguration} from "./providers/env-configuration";
+
+
+export function envConfigurationFactory(config: EnvConfiguration) {
+  return () => config.load();
+}
 
 @NgModule({
   declarations: [
   ],
-  providers: [ EnvConfiguration ],
+  providers: [
+    EnvConfiguration,
+    { provide: APP_INITIALIZER,
+      useFactory: envConfigurationFactory,
+      deps: [EnvConfiguration],
+      multi: true },
+  ],
   exports: [
   ],
   imports: [
@@ -15,4 +26,4 @@ import {EnvConfiguration} from "./providers/env-configuration";
     CUSTOM_ELEMENTS_SCHEMA
   ]
 })
-export class MyModule {}
+export class GLIonic2EnvConfiguration {}

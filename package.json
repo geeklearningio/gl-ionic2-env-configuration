@@ -1,6 +1,6 @@
 {
   "name": "gl-ionic2-env-configuration",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "An Ionic2 Service to load an environment specific configuration before everything else",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
