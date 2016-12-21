@@ -1,8 +1,6 @@
-import { Observable } from 'rxjs';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { EnvConfigurationProvider } from "./providers/env-configuration-provider";
-
 
 export function envConfigurationFactory(config: EnvConfigurationProvider<any>) {
   return () => config.load();
