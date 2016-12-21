@@ -22,7 +22,9 @@ npm install gl-ionic2-env-configuration
 ##Create or copy your configuration json file
 
 ###Simple way
-Add a `env-configuration.json` file in your www folder containing your configuration variables.
+Add a `env-configuration.json` file in your `www` folder containing your env configuration variables.
+There is no required key needed, it's your configuration. It will surely contain your api url, your Google Analytics ID and more...
+To copy the right configuration for the right environment, you will need a copy executable, as explained in the next section.
 
 ###Automatic way (use a copy executable)
 I made a simpe executable that will copy the right configuration file for a specified environment:
