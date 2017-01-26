@@ -16,7 +16,7 @@ So if you prefer reading the code, go ahead!
 ##Install the module
 Install it with npm:
 ```
-npm install gl-ionic2-env-configuration
+npm install gl-ionic2-env-configuration --save
 ```
 
 ##Create or copy your configuration json file
