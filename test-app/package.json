@@ -8,8 +8,9 @@
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "ionic:build": "node copy-env-config.js --env prod | ionic-app-scripts build",
-    "ionic:serve": "node copy-env-config.js --env preprod | ionic-app-scripts serve",
-    "ionic:serve:preprod": "node copy-env-config.js --env dev | ionic-app-scripts serve"
+    "ionic:build:prod": "node copy-env-config.js --env prod | ionic-app-scripts build --prod",
+    "ionic:serve": "node copy-env-config.js --env dev | ionic-app-scripts serve",
+    "ionic:serve:preprod": "node copy-env-config.js --env preprod | ionic-app-scripts serve"
   },
   "dependencies": {
     "@angular/common": "2.2.1",
@@ -29,7 +30,7 @@
     "zone.js": "0.6.26"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "0.0.47",
+    "@ionic/app-scripts": "^1.0.0",
     "typescript": "2.0.9"
   },
   "cordovaPlugins": [
@@ -40,6 +41,5 @@
     "cordova-plugin-splashscreen",
     "ionic-plugin-keyboard"
   ],
-  "cordovaPlatforms": [
-  ]
+  "cordovaPlatforms": []
 }
