@@ -7,10 +7,10 @@
     "declaration": true,
     "noImplicitAny": false,
     "experimentalDecorators": true,
-    "lib": ["dom", "es2015"],
+    "lib": ["dom", "es2017"],
     "outDir": "./dist",
-    "types": [
-      "node"
+    "typeRoots": [
+      "node_modules/@types"
     ]
   },
   "exclude": [

@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
+import { merge } from 'lodash'
 
-var _merge = require('lodash/merge');
+export function envConfigurationFactory(config: EnvConfigurationProvider<any>) {
+  return () => config.load();
+}
 
 @Injectable()
 export class EnvConfigurationProvider<T> {
@@ -32,7 +35,7 @@ export class EnvConfigurationProvider<T> {
 
   public addConfig(obj: T) {
     if (obj) {
-      this.mergedConfiguration = <T>_merge(this.mergedConfiguration, obj);
+      this.mergedConfiguration = <T>merge(this.mergedConfiguration, obj);
     }
   }
 
